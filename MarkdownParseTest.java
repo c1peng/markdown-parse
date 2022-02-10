@@ -50,6 +50,4 @@ public class MarkdownParseTest {
         ArrayList<String> links = MarkdownParse.getLinks(contents);
         assertEquals(0, links.size()); // empty file
     }
-
 }
-
