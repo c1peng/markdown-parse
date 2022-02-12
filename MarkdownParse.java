@@ -9,8 +9,11 @@ public class MarkdownParse {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then take up to
         // the next )
-        if (markdown.length() <= 0) {
-            throw new IndexOutOfBoundsException();
+        try {
+            String oob = markdown.substring(0, 1);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println(e.toString());
+            System.exit(0);
         }
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
