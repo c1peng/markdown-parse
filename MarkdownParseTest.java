@@ -50,4 +50,32 @@ public class MarkdownParseTest {
         ArrayList<String> links = MarkdownParse.getLinks(contents);
         assertEquals(0, links.size()); // empty file
     }
+
+
+    @Test
+    public void getLinksForReportTest1() throws  IOException {
+        Path fileName = Path.of("report-test1.md");
+        String contents = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(contents);
+        assertEquals("url.com", links.get(0));
+        assertEquals("google.com", links.get(1));
+        assertEquals("google.com", links.get(2));
+        assertEquals("ucsd.edu", links.get(3));
+    }
+
+    @Test
+    public void getLinksForReportTest2() throws  IOException {
+        Path fileName = Path.of("report-test2.md");
+        String contents = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(contents);
+        assertEquals(0, links.size());
+    }
+
+    @Test
+    public void getLinksForReportTest3() throws  IOException {
+        Path fileName = Path.of("report-test3.md");
+        String contents = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(contents);
+        assertEquals(0, links.size());
+    }
 }

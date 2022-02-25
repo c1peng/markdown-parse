@@ -44,14 +44,32 @@ public class MarkdownParse {
             if(markdown.substring(closeParen-1,closeParen).compareTo("(")==0){
                 closeParen = markdown.indexOf(")", closeParen+1);
             }
-            toReturn.add(markdown.substring(openParen + 1, closeParen)); // hi
+            String toAdd = markdown.substring(openParen + 1, closeParen);
+
+            while (toAdd.contains("(") || toAdd.contains(")") || toAdd.contains("`")) {
+                if (toAdd.contains("`")) {
+                    String left = toAdd.substring(0, toAdd.indexOf("`"));
+                    String right = toAdd.substring(toAdd.indexOf("`")+1);
+                    toAdd = left + right;
+                } else if (toAdd.contains(")")) {
+                    String left = toAdd.substring(0, toAdd.indexOf(")"));
+                    String right = toAdd.substring(toAdd.indexOf(")")+1);
+                    toAdd = left + right;
+                } else if (toAdd.contains("(")) {
+                    String left = toAdd.substring(0, toAdd.indexOf("("));
+                    String right = toAdd.substring(toAdd.indexOf("(")+1);
+                    toAdd = left + right;
+                }
+            }
+
+            toReturn.add(toAdd); // hi
             currentIndex = closeParen + 1;
         }
 
         return toReturn;
     }
     public static void main(String[] args) throws IOException {
-		Path fileName = Path.of(args[0]);
+		Path fileName = Path.of("report-test1.md");
 	    String contents = Files.readString(fileName);
         ArrayList<String> links = getLinks(contents);
         System.out.println(links);

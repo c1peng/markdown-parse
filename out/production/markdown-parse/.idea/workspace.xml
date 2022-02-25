@@ -11,7 +11,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MarkdownParse.java" beforeDir="false" afterPath="$PROJECT_DIR$/MarkdownParse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkdownParseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MarkdownParseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +50,7 @@
     <property name="project.structure.proportion" value="0.20444444" />
     <property name="project.structure.side.proportion" value="0.14565825" />
   </component>
-  <component name="RunManager" selected="Application.MarkdownParse">
+  <component name="RunManager">
     <configuration name="MarkdownParse" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MarkdownParse" />
       <module name="markdown-parse" />
@@ -59,20 +58,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MarkdownParseTest.getLinksForReportTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="markdown-parse" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MarkdownParseTest" />
-      <option name="METHOD_NAME" value="getLinksForReportTest1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MarkdownParse" />
-        <item itemvalue="JUnit.MarkdownParseTest.getLinksForReportTest1" />
       </list>
     </recent_temporary>
   </component>
