@@ -9,12 +9,6 @@ public class MarkdownParse {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then take up to
         // the next )
-        try {
-            String oob = markdown.substring(0, 1);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println(e.toString());
-            System.exit(0);
-        }
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
@@ -36,29 +30,29 @@ public class MarkdownParse {
                 closeParen = markdown.length();
             }
 
-
-
             if(closeParen==-1){
                 return toReturn;
             }
+
             if(markdown.substring(closeParen-1,closeParen).compareTo("(")==0){
                 closeParen = markdown.indexOf(")", closeParen+1);
             }
-            String toAdd = markdown.substring(openParen + 1, closeParen);
+
+
+            String toAdd = markdown.substring(openParen + 1, closeParen).trim();
+
+            if (toAdd.contains("\n")) {
+                closeParen = markdown.indexOf("\n", openParen);
+                toAdd = markdown.substring(openParen + 1, closeParen).trim();
+            }
 
             while (toAdd.contains("(") || toAdd.contains(")") || toAdd.contains("`")) {
                 if (toAdd.contains("`")) {
-                    String left = toAdd.substring(0, toAdd.indexOf("`"));
-                    String right = toAdd.substring(toAdd.indexOf("`")+1);
-                    toAdd = left + right;
+                    toAdd = toAdd.replace("`", "");
                 } else if (toAdd.contains(")")) {
-                    String left = toAdd.substring(0, toAdd.indexOf(")"));
-                    String right = toAdd.substring(toAdd.indexOf(")")+1);
-                    toAdd = left + right;
+                    toAdd = toAdd.replace(")", "");
                 } else if (toAdd.contains("(")) {
-                    String left = toAdd.substring(0, toAdd.indexOf("("));
-                    String right = toAdd.substring(toAdd.indexOf("(")+1);
-                    toAdd = left + right;
+                    toAdd = toAdd.replace("(", "");
                 }
             }
 
@@ -69,7 +63,7 @@ public class MarkdownParse {
         return toReturn;
     }
     public static void main(String[] args) throws IOException {
-		Path fileName = Path.of("report-test1.md");
+		Path fileName = Path.of("report-test3.md");
 	    String contents = Files.readString(fileName);
         ArrayList<String> links = getLinks(contents);
         System.out.println(links);
