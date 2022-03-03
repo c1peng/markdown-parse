@@ -42,7 +42,7 @@
     <property name="project.structure.proportion" value="0.20444444" />
     <property name="project.structure.side.proportion" value="0.14565825" />
   </component>
-  <component name="RunManager" selected="JUnit.MarkdownParseTest">
+  <component name="RunManager" selected="Application.MarkdownParse">
     <configuration name="MarkdownParse" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MarkdownParse" />
       <module name="markdown-parse" />
@@ -91,9 +91,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MarkdownParse" />
         <item itemvalue="JUnit.MarkdownParseTest" />
         <item itemvalue="JUnit.MarkdownParseTest.getLinksForReportTest3" />
-        <item itemvalue="Application.MarkdownParse" />
         <item itemvalue="JUnit.MarkdownParseTest.getLinksForReportTest2" />
         <item itemvalue="JUnit.MarkdownParseTest.getLinksForReportTest1" />
       </list>
