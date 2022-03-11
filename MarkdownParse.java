@@ -10,6 +10,7 @@ public class MarkdownParse {
         // find the next [, then find the ], then find the (, then take up to
         // the next )
         int currentIndex = 0;
+        int checkInfinite = 0;
         while(currentIndex < markdown.length()) {
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
 
@@ -23,6 +24,9 @@ public class MarkdownParse {
             }
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
+            if (openParen == -1) {
+                break;
+            }
             int closeParen;
             if (markdown.contains(")")){
                 closeParen = markdown.indexOf(")", openParen);
@@ -37,8 +41,6 @@ public class MarkdownParse {
             if(markdown.substring(closeParen-1,closeParen).compareTo("(")==0){
                 closeParen = markdown.indexOf(")", closeParen+1);
             }
-
-
             String toAdd = markdown.substring(openParen + 1, closeParen).trim();
 
             if (toAdd.contains("\n")) {
@@ -55,19 +57,32 @@ public class MarkdownParse {
                     toAdd = toAdd.replace("(", "");
                 }
             }
+            if (!toAdd.contains(".")) {
+                toAdd = "";
+            }
 
             toReturn.add(toAdd); // hi
             currentIndex = closeParen + 1;
+            if (currentIndex == checkInfinite) {
+                System.out.println("You are in an infinite loop. ");
+                break;
+            }
+            checkInfinite = currentIndex;
         }
 
         return toReturn;
     }
     public static void main(String[] args) throws IOException {
-		for (String arg : args) {
-            Path fileName = Path.of(arg);
-            String contents = Files.readString(fileName);
-            ArrayList<String> links = getLinks(contents);
-            System.out.println(links);
-        }
+        Path fileName = Path.of("484.md");
+        String contents = Files.readString(fileName);
+        ArrayList<String> links = getLinks(contents);
+        System.out.println(links);
+
+//		for (String arg : args) {
+//            Path fileName = Path.of(arg);
+//            String contents = Files.readString(fileName);
+//            ArrayList<String> links = getLinks(contents);
+//            System.out.println(links);
+//        }
     }
 }
